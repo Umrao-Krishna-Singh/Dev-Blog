@@ -1,0 +1,148 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* border-box as box sizing makes so that you don't need to worry 
+about doing maths to figure out how big a box is (in terms of css - recall that
+everything as far as css is concerned - is a box) with box-sizing defined like this
+when you give padding or border width - the content inside the box will resize to accomodate
+to give the appropriate effect instead of growing outwards keeping the contents inside the same
+which is the default behaviour - for consistency you should have *:before and *:after as well
+those are two elements that are not targetted by just the wildcard selector (*) here  */
+body{
+  background-color: #181A1B;
+  color: #fff;
+}
+
+.header-img{
+  background: url(/images/Devloper.jpg) no-repeat 50% 75%;
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    /* padding: auto auto; */
+    /* height: 10vh; */
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 15px;
+    background-color: #000000;
+}
+
+.navbar-nav{
+  align-items: flex-end;
+}
+.navbar-nav  li{
+  margin-left: 1rem;
+  border-style: solid;
+  border-color:#9136F7;
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+/* here I'm trying to make the navigation list item look like a button and act like a button. 
+So it has a border, I gave it the default bootstrap border radius for a button to keep 
+it consistent. Overflow hidden property is there to make it so that the animation I'm doing
+does not show when it goes out of bounds - so it is visible only inside the area of nav li.
+cursor pointer just turns the pointer into a hand when I hover over the li */
+
+.navbar-nav li:after{
+  width: 0;
+  height: 0;
+  content: " ";
+  position: absolute;
+  border-radius: 100%;
+  background: #9136F7;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-in;
+}
+/* this element is what makes the hover animation on li element possible. Basically it just
+expands from nothingness to 200px*200px square but since the border radius is 100% it 
+increases as a ripple and then fills out the li and after that it gets hidden. */
+.navbar-nav  li:hover:after{
+width: 200px;
+height: 200px;
+border-radius: 4px;
+}
+
+.navbar-nav  li a{
+  color: #9136F7 !important;
+  text-decoration: none !important;
+  z-index: 1;
+  transition: all 300ms ease-in;
+}
+.navbar-nav  li:hover > a {
+    color: #fff !important;
+}
+
+.navbar-brand{
+  transition: all 200ms ease-in;
+}
+.navbar-brand:hover{
+  color: #9136F7 !important;
+}
+.container-fluid{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wrap-around-card{
+  border-style: solid;
+  border-color:#fff;
+  border-width: 1px;
+  border-radius: 8px;
+  margin: 1rem auto 1rem;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.3)
+}
+
+.wrap-around-card 
+.wrap-around-card p{
+  margin-bottom: 0;
+}
+.wrap-around-card:hover{
+  cursor:pointer;
+}
+.form-group .btn{
+  margin: 1rem 0 1rem 0;
+}
+
+.footer {
+  margin-top: 50px;
+	position: static;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #9136F7;
+}
+
+.footer p {
+	padding-top: 30px;
+	font-size: 12px;
+  color: #fff;
+}
+
+
+.form-control{
+  margin-bottom: 15px;
+}
+
+.wrapper { /*this is basically being used to push the footer down at the bottom since the  */
+  /* length of the content changes when you add to the home page with ejs. There is no position property that can give the footer like it should be  */
+ /* This is a custom class I created not a bootstrap class, you can name it anything */
+  min-height: calc(100vh - 150px);
+  /* vh sets height according to initial viewport and 150px is just the combined height of header and footer section for this particular project */
+}

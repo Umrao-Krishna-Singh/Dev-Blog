@@ -1,0 +1,16 @@
+<%- include('partials/header.ejs'); %>
+<a href="/compose"><button class="btn btn-dark" type="button" style="position: relative; left: 10 rem;"> Back to compose page </button></a>
+
+<h1>Select the post to change</h1>
+
+    <%# creating a loop for list of blogs on the home page %>
+    
+    <% if (homecontent.length > 1) { %>
+      <% for (i=1; i<homecontent.length; i++) { %>
+        <div class="wrap-around-card" onclick="location.href='/updates/<%-homecontent[i].blogPostTitle%>'">
+        <h1> <%-  homecontent[i].blogPostTitle %> </a></h1>
+        <h5> <%- homecontent[i].createdAt.toString().substring(4,15) %> </h5>
+        <h5> <%- homecontent[i].blogTag %> </h5>
+        </div>
+    <% }} %>
+<%- include('partials/footer.ejs'); %>
